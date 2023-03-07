@@ -21,8 +21,8 @@ public class Boundaries : MonoBehaviour
     {
         Vector3 viewPos = transform.position;
 
-        Debug.Log("X = " + screenBounds.x);
-        Debug.Log("Y = " + screenBounds.y);
+        // Debug.Log("X = " + screenBounds.x);
+        // Debug.Log("Y = " + screenBounds.y);
         viewPos.x = Mathf.Clamp(viewPos.x, screenBounds.x * -1 + objectWidth, screenBounds.x - objectWidth);
         viewPos.y = Mathf.Clamp(viewPos.y, screenBounds.y * -1 + objectHeight, screenBounds.y - objectHeight);
         transform.position = viewPos;

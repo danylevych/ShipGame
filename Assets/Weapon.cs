@@ -55,10 +55,10 @@ public class Weapon : MonoBehaviour
 
         if (bullet != null)
         {
-            Debug.Log("Bah");
+            // Debug.Log("Bah");
             GameObject newBullet = Instantiate(bullet, firePoit.position, Quaternion.identity);
             // newBullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1 * speed * Time.deltaTime));
-            Destroy(newBullet, 3);
+            Destroy(newBullet, 2);
         }
         // bullet = gameObject.AddComponent<Bullet>();
     }
