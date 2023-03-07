@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject hitting;
+
     public float speed = 300f;
 
     private Vector3 startPos;
     private Vector3 target;
-    private GameObject leftWing;
-    private GameObject rightWing;
 
     private float offset;
     private float distance;
@@ -18,8 +19,10 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        leftWing = GameObject.Find("Left");
-        rightWing = GameObject.Find("Right");
+        // hitting = GetComponent<Animator>();
+
+        GameObject leftWing = GameObject.Find("Left");
+        GameObject rightWing = GameObject.Find("Right");
 
         startTime = Time.time;
         target = new Vector3(0, 0, Camera.main.farClipPlane);
@@ -37,14 +40,45 @@ public class Bullet : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
+    //{
+    //    Vector3 cameraPos = Camera.main.transform.position;
+    //    float distance = Camera.main.farClipPlane;
+
+    //    cameraPos.z += distance;
+
+    //    int y = Camera.main.pixelHeight / 2;
+    //    int x = Camera.main.pixelWidth / 2;
+
+
+    //    transform.Translate((cameraPos + -transform.position) * 10 * Time.deltaTime);
+
+    //    if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
+    //    {
+    //        transform.localScale += new Vector3(-0.2f, -0.2f, -0.2f) * Time.deltaTime;
+    //    }
+
         float distCovered = (Time.time - startTime) * speed;
-        float fracJourney = distCovered / distance;
+    float fracJourney = distCovered / distance;
 
-        float x = Mathf.Lerp(startPos.x, target.x, fracJourney);
-        float y = Mathf.Lerp(startPos.y, target.y, fracJourney);
-        float z = Mathf.Lerp(startPos.z, target.z, fracJourney);
+    float x = Mathf.Lerp(startPos.x, target.x, fracJourney);
+    float y = Mathf.Lerp(startPos.y, target.y, fracJourney);
+    float z = Mathf.Lerp(startPos.z, target.z, fracJourney);
 
-        transform.position = new Vector3(x + offset, y, z);
+    transform.position = new Vector3(x + offset, y, z);
+    }
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Pizda: " + other.gameObject.tag);
+        if (other.gameObject.tag == "Target")
+        {
+            GameObject e = Instantiate(hitting) as GameObject;
+            e.transform.position = transform.position;
+            // e.transform.localScale = transform.localScale;
+            Destroy(gameObject);
+            Destroy(e, 0.25f);
+        }
     }
 }
