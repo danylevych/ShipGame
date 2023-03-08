@@ -13,15 +13,12 @@ public class Weapon : MonoBehaviour
     private float timeOfEachBullet;
 
 
-
     private void Start()
     {
         isPressSpace = false;
         timeOfEachBullet = 0f;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         ChackInput();
@@ -34,7 +31,6 @@ public class Weapon : MonoBehaviour
             timeOfEachBullet = 0f;
         }
     }
-
 
     private void ChackInput()
     {
@@ -50,16 +46,10 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-       
-        // bullet = gameObject.GetComponent<Bullet>(); 
-
         if (bullet != null)
         {
-            // Debug.Log("Bah");
             GameObject newBullet = Instantiate(bullet, firePoit.position, Quaternion.identity);
-            // newBullet.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1 * speed * Time.deltaTime));
             Destroy(newBullet, 2);
         }
-        // bullet = gameObject.AddComponent<Bullet>();
     }
 }

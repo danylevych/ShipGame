@@ -25,12 +25,21 @@ public class GenerateTarget : MonoBehaviour
 
     private GameObject target;
 
-    void Start()
+    private void Start()
     {
         x = new Point(-8, 8);
         y = new Point(-4, 4);
         z = new Point(10, 15);
+
         GetTarget();
+    }
+
+    private void Update()
+    {
+        if (target == null)
+        {
+            GetTarget();
+        }
     }
 
     public void GetTarget()
@@ -40,17 +49,4 @@ public class GenerateTarget : MonoBehaviour
                                                      Random.Range(z.min, z.max)),
                                                      Quaternion.identity);
     }
-
-
-    
-
-    //void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log("Collision detected between " + gameObject.name + " and " + collision.gameObject.name);
-    //}
-
-    /*    private void Update()
-        {
-            target.transform.Translate(target.transform.position);
-        }*/
 }

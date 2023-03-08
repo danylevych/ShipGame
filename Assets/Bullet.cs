@@ -68,17 +68,50 @@ public class Bullet : MonoBehaviour
     transform.position = new Vector3(x + offset, y, z);
     }
 
-
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Pizda: " + other.gameObject.tag);
-        if (other.gameObject.tag == "Target")
-        {
+        if (other.tag == "Target")
+        { 
+            Debug.Log("Bah");
+
+            Target target = other.GetComponent<Target>();
+
+            if (target != null)
+            {
+                Debug.Log("Target isn't null");
+                target.HelthDown();
+            }
+
             GameObject e = Instantiate(hitting) as GameObject;
             e.transform.position = transform.position;
-            // e.transform.localScale = transform.localScale;
+
             Destroy(gameObject);
             Destroy(e, 0.25f);
         }
     }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    // Debug.Log("Pizda: " + other.gameObject.tag);
+    //    Debug.Log(other.gameObject);
+    //    Debug.Log(other.gameObject.GetComponent<TargetF>());
+    //    TargetF target = other.GetComponent<TargetF>();
+    //    if (other.tag == "Target")
+    //    {
+    //        //other = target;
+
+    //        if (target != null)
+    //        {
+    //            Debug.Log("Target isn't null");
+    //            target.HelthDown();
+    //        }
+    //        Debug.Log("Target is null");
+
+    //        GameObject e = Instantiate(hitting) as GameObject;
+    //        e.transform.position = transform.position;
+
+    //        // e.transform.localScale = transform.localScale;
+    //        Destroy(gameObject);
+    //        Destroy(e, 0.25f);
+    //    }
+    //}
 }
