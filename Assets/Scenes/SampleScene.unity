@@ -5416,7 +5416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPref: {fileID: 7474341614459329759, guid: 1b224666457448746bf3b2618559f5f3, type: 3}
-  health: 100
+  timeGenerate: 2
 --- !u!1 &857553724
 GameObject:
   m_ObjectHideFlags: 0
@@ -5889,6 +5889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5dc553cad01334c91ac479d603917e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunsightPref: {fileID: 1202835457498990646, guid: d0145682bf6c0bf48bd1ee8796cee270, type: 3}
+  gunsightPref: {fileID: 7408994721853607032, guid: d0145682bf6c0bf48bd1ee8796cee270, type: 3}
   shipPosition: {fileID: 857553725}
   speed: 80

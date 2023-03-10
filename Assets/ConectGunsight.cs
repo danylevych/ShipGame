@@ -6,6 +6,12 @@ public class ConectGunsight : MonoBehaviour
 {
     [SerializeField]
     private GameObject gunsightPref;
+    
+    [SerializeField]
+    private Transform shipPosition;
+
+    [SerializeField]
+    private float speed = 80;
 
     private GameObject gunsight;
 
@@ -14,21 +20,20 @@ public class ConectGunsight : MonoBehaviour
         gunsight = Instantiate(gunsightPref, shipPosition);
     }
 
-    [SerializeField]
-    private Transform shipPosition;
-
-    [SerializeField]
-    private float speed = 80;
-
-
     void Update()
     {
         Vector3 direction = GetDistance() * speed * Time.deltaTime;
-
-        gunsight.transform.rotation = Quaternion.Inverse(new Quaternion(direction.x, 
-                                                                        direction.y, 
-                                                                        direction.z, 
+        gunsight.transform.rotation = Quaternion.Inverse(new Quaternion(direction.x,
+                                                                        direction.y,
+                                                                        direction.z,
                                                                         gunsight.transform.rotation.w));
+        var dots = gunsight.GetComponent<Dots>();
+        if (dots != null)
+        {
+            Vector3 cameraCord2 = Camera.main.transform.position;
+            cameraCord2.z += Camera.main.farClipPlane;
+            dots.SetPosForAllDots(shipPosition.position);
+        }
     }
 
 

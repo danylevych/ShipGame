@@ -19,8 +19,6 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        // hitting = GetComponent<Animator>();
-
         GameObject leftWing = GameObject.Find("Left");
         GameObject rightWing = GameObject.Find("Right");
 
@@ -31,55 +29,40 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(transform.position, leftWing.transform.position) <= 1)
         {
-            offset = -1;
+            offset = -0.6f;
         }
         else
         {
-            offset = 1;
+            offset = 0.6f;
         }
     }
 
     private void Update()
-    { 
-    //{
-    //    Vector3 cameraPos = Camera.main.transform.position;
-    //    float distance = Camera.main.farClipPlane;
-
-    //    cameraPos.z += distance;
-
-    //    int y = Camera.main.pixelHeight / 2;
-    //    int x = Camera.main.pixelWidth / 2;
-
-
-    //    transform.Translate((cameraPos + -transform.position) * 10 * Time.deltaTime);
-
-    //    if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
-    //    {
-    //        transform.localScale += new Vector3(-0.2f, -0.2f, -0.2f) * Time.deltaTime;
-    //    }
-
+    {
         float distCovered = (Time.time - startTime) * speed;
-    float fracJourney = distCovered / distance;
+        float fracJourney = distCovered / distance;
 
-    float x = Mathf.Lerp(startPos.x, target.x, fracJourney);
-    float y = Mathf.Lerp(startPos.y, target.y, fracJourney);
-    float z = Mathf.Lerp(startPos.z, target.z, fracJourney);
+        float x = Mathf.Lerp(startPos.x, target.x, fracJourney);
+        float y = Mathf.Lerp(startPos.y, target.y, fracJourney);
+        float z = Mathf.Lerp(startPos.z, target.z, fracJourney);
 
-    transform.position = new Vector3(x + offset, y, z);
+        transform.position = new Vector3(x + offset, y, z);
+        
+        if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
+        {
+            transform.localScale += new Vector3(-0.2f, -0.2f, -0.2f) * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Target")
         { 
-            Debug.Log("Bah");
-
             Target target = other.GetComponent<Target>();
 
             if (target != null)
             {
-                Debug.Log("Target isn't null");
-                target.HelthDown();
+                target.TakeDamage(10);
             }
 
             GameObject e = Instantiate(hitting) as GameObject;
@@ -89,29 +72,4 @@ public class Bullet : MonoBehaviour
             Destroy(e, 0.25f);
         }
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    // Debug.Log("Pizda: " + other.gameObject.tag);
-    //    Debug.Log(other.gameObject);
-    //    Debug.Log(other.gameObject.GetComponent<TargetF>());
-    //    TargetF target = other.GetComponent<TargetF>();
-    //    if (other.tag == "Target")
-    //    {
-    //        //other = target;
-
-    //        if (target != null)
-    //        {
-    //            Debug.Log("Target isn't null");
-    //            target.HelthDown();
-    //        }
-    //        Debug.Log("Target is null");
-
-    //        GameObject e = Instantiate(hitting) as GameObject;
-    //        e.transform.position = transform.position;
-
-    //        // e.transform.localScale = transform.localScale;
-    //        Destroy(gameObject);
-    //        Destroy(e, 0.25f);
-    //    }
-    //}
 }

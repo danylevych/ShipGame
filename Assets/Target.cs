@@ -6,18 +6,24 @@ public class Target : MonoBehaviour
 {
     [SerializeField]
     private int health;
+    [SerializeField]
+    private GameObject explosionPref;
+
 
     private void Start()
     {
         health = 100;
     }
 
-    public void HelthDown()
+    public void TakeDamage(int damage)
     {
-        health -= 10;
+        health -= damage;
         if (health <= 0)
         {
+            GameObject e = Instantiate(explosionPref, gameObject.transform.position, Quaternion.identity);
+
             Destroy(gameObject);
+            Destroy(e, 0.25f);
         }
     }
 }

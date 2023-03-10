@@ -6,7 +6,9 @@ public class GenerateTarget : MonoBehaviour
 {
     [SerializeField]
     private GameObject targetPref;
-    
+
+    public float timeGenerate;
+
     struct Point
     {
         public float min;
@@ -29,7 +31,7 @@ public class GenerateTarget : MonoBehaviour
     {
         x = new Point(-8, 8);
         y = new Point(-4, 4);
-        z = new Point(10, 15);
+        z = new Point(18, 25);
 
         GetTarget();
     }
@@ -38,6 +40,7 @@ public class GenerateTarget : MonoBehaviour
     {
         if (target == null)
         {
+            new WaitForSeconds(timeGenerate);
             GetTarget();
         }
     }
