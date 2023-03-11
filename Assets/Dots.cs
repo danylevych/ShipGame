@@ -31,19 +31,11 @@ public class Dots : MonoBehaviour
     public void SetPosForAllDots(Vector3 newPos)
     {
         Vector3 cameraPos = Camera.main.transform.position;
-        float distance = Camera.main.farClipPlane;
-        cameraPos.z += distance;
+        cameraPos.z += Camera.main.farClipPlane;
 
-        newPos.z = positionFirst.z;
-
-        for(int i = 0; i < countOfDots; i++, newPos.z += offsetPos)
+        for(int i = 0; i < countOfDots; i++)
         {
-            var transform = Vector3.Lerp(newPos, cameraPos, 0.05f * (i + 1));
-
-            transform.z = dots[i].transform.position.z;
-
-            dots[i].transform.position = transform;
-
+            dots[i].transform.position = Vector3.Lerp(newPos, cameraPos, 0.05f * (i + 1));
         }
     }
 }

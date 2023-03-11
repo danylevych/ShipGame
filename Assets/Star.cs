@@ -15,14 +15,6 @@ public class Star : MonoBehaviour
 
         star.transform.position = cameraPos;
 
-        // Quaternion starRotation = star.transform.rotation;
         star.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

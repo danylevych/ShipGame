@@ -29,11 +29,11 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(transform.position, leftWing.transform.position) <= 1)
         {
-            offset = -0.6f;
+            offset = -0.4f;
         }
         else
         {
-            offset = 0.6f;
+            offset = 0.4f;
         }
     }
 

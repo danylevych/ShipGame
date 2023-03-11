@@ -123,10 +123,7 @@ public class Move : MonoBehaviour
         }
 
 
-
         obj.transform.position += moveTo * speed * Time.deltaTime;
-
-
 
         float currentAngle = LimitAngle(obj.transform.eulerAngles.z);
 
@@ -138,7 +135,6 @@ public class Move : MonoBehaviour
 
         if (!isRotation)
         {
-            // Debug.Log("Limit = " + LimitAngle(obj.transform.eulerAngles.z));
             if ((int)LimitAngle(obj.transform.eulerAngles.z) != 0)
             {
                 if (LimitAngle(obj.transform.eulerAngles.z) < 0)
@@ -161,7 +157,7 @@ public class Move : MonoBehaviour
     void LateUpdate()
     {
         float planeAngle = LimitAngle(obj.transform.eulerAngles.z);
-        float planeNewAngle = Mathf.Clamp(planeAngle, -5, 5);
+        float planeNewAngle = Mathf.Clamp(planeAngle, -7, 7);
 
         Camera.main.transform.rotation = Quaternion.Inverse(Quaternion.Euler(obj.transform.rotation.eulerAngles.x,
                                                                              obj.transform.rotation.eulerAngles.y,
