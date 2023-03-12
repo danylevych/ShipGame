@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HPManager : MonoBehaviour
 {
@@ -44,6 +45,9 @@ public class HPManager : MonoBehaviour
         if (hp == 0)
         {
             Debug.Log("You lose");
+
+            PlayerPrefs.SetInt("score", ScoreManager.instance.GetScore());
+            SceneManager.LoadScene("EndGame");
         }
 
         SetHPIntoLabel();
