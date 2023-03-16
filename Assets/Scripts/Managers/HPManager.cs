@@ -44,9 +44,7 @@ public class HPManager : MonoBehaviour
 
         if (hp == 0)
         {
-            Debug.Log("You lose");
-
-            PlayerPrefs.SetInt("score", ScoreManager.instance.GetScore());
+            ScoreManager.instance.SaveScors();
             SceneManager.LoadScene("EndGame");
         }
 

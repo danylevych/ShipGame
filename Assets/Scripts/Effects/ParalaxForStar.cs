@@ -13,7 +13,7 @@ public class ParalaxForStar : MonoBehaviour
         starRotation.y += Input.GetAxis("Mouse Y") * speed * Time.deltaTime;
         starRotation.z = 0;
 
-        transform.rotation = Quaternion.Euler(-starRotation);
+        transform.rotation = Quaternion.Euler(-starRotation.x, starRotation.y, starRotation.z);
     }
 
     private void Update()
@@ -23,7 +23,7 @@ public class ParalaxForStar : MonoBehaviour
 
         if (System.Math.Abs(transform.rotation.x) <= 25 && System.Math.Abs(transform.rotation.y) <= 25)
         {
-            transform.rotation = Quaternion.Euler(-starRotation);
+            transform.rotation = Quaternion.Euler(-starRotation.x, starRotation.y, starRotation.z);
         }
     }
 }
