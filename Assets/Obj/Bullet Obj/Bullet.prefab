@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitting: {fileID: 5807697566317355430, guid: 6c5c1b8a9101ef84f9aa2375b13dcac1, type: 3}
-  speed: 40
+  speed: 70
 --- !u!54 &-5626428635294129291
 Rigidbody:
   m_ObjectHideFlags: 0

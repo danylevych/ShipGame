@@ -33,13 +33,13 @@ public class GenerateTarget : MonoBehaviour
     {
         x = new Point(-8, 8);
         y = new Point(-6, 6);
-        z = new Point(25, 30);
+        z = new Point(40, 45);
         timeOfLastTarget = 0f;
         GetTarget();
     }
 
     private void Update()
-    {
+    { 
         timeOfLastTarget += Time.deltaTime;
 
         if (timeOfLastTarget >= 5f)
@@ -51,7 +51,9 @@ public class GenerateTarget : MonoBehaviour
         if (target == null)
         {
             new WaitForSeconds(timeGenerate);
+
             GetTarget();
+
             ScoreManager.instance.AddScore();
             HPManager.instance.AddHP();
         }

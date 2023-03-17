@@ -7,14 +7,11 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField]
     private GameObject loadingScreen;
-    //[SerializeField]
-    //private GameObject whichIsBack;
     [SerializeField]
     private Slider loading;
 
     public void LoadScene(string sceneName)
     {
-        //whichIsBack.SetActive(false);
         loadingScreen.SetActive(true);
         StartCoroutine(LoadSceneAsynchronously(sceneName));
     }
