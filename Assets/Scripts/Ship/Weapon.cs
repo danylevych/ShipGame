@@ -49,7 +49,7 @@ public class Weapon : MonoBehaviour
         if (bullet != null)
         {
             GameObject newBullet = Instantiate(bullet, firePoit.position, Quaternion.identity);
-            Destroy(newBullet, 2);
+            Destroy(newBullet, 1f);
         }
     }
 }

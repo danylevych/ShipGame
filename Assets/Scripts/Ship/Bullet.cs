@@ -29,11 +29,11 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(transform.position, leftWing.transform.position) <= 1)
         {
-            offset = -0.4f;
+            offset = -0.5f;
         }
         else
         {
-            offset = 0.4f;
+            offset = 0.5f;
         }
     }
 
@@ -48,10 +48,10 @@ public class Bullet : MonoBehaviour
 
         transform.position = new Vector3(x + offset, y, z);
         
-        if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
+        /*if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
         {
-            transform.localScale += new Vector3(-0.2f, -0.2f, -0.2f) * Time.deltaTime;
-        }
+            transform.localScale += new Vector3(-0.3f, -0.3f, -0.3f) * Time.deltaTime;
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)

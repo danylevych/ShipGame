@@ -26,36 +26,37 @@ public class GenerateTarget : MonoBehaviour
     private Point z;
 
     private GameObject target;
-
+    private float timeDeath;
     private float timeOfLastTarget;
 
     private void Start()
     {
+        timeDeath = 0f;
+
         x = new Point(-8, 8);
         y = new Point(-6, 6);
-        z = new Point(40, 45);
-        timeOfLastTarget = 0f;
+        z = new Point(60, 65);
+        
         GetTarget();
     }
 
     private void Update()
     { 
-        timeOfLastTarget += Time.deltaTime;
+        if (target == null)
+        {
+            if (Tools.Clock.CheckTime(ref timeDeath, timeGenerate))
+            {
+                GetTarget();
 
-        if (timeOfLastTarget >= 5f)
+                ScoreManager.instance.AddScore();
+                HPManager.instance.AddHP();
+            }
+        }
+
+        if (Tools.Clock.CheckTime(ref timeOfLastTarget, 5f))
         {
             HPManager.instance.DelHP();
             timeOfLastTarget = 0f;
-        }
-
-        if (target == null)
-        {
-            new WaitForSeconds(timeGenerate);
-
-            GetTarget();
-
-            ScoreManager.instance.AddScore();
-            HPManager.instance.AddHP();
         }
     }
 

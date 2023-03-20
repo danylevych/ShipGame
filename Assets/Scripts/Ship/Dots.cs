@@ -33,9 +33,11 @@ public class Dots : MonoBehaviour
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.z += Camera.main.farClipPlane;
 
-        for(int i = 0; i < countOfDots; i++)
+        dots[0].transform.position = Vector3.Lerp(newPos, cameraPos, positionFirst.z / 100f);
+
+        for (int i = 1; i < countOfDots; i++)
         {
-            dots[i].transform.position = Vector3.Lerp(newPos, cameraPos, 0.05f * (i + 1));
+            dots[i].transform.position = Vector3.Lerp(dots[i - 1].transform.position, cameraPos, (offsetPos / 100.0f));
         }
     }
 }

@@ -5,10 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject loadingScreen;
-    [SerializeField]
-    private Slider loading;
+    public static SceneLoader instance;
+
+    [SerializeField] private Slider loading;
+    [SerializeField] private GameObject loadingScreen;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     public void LoadScene(string sceneName)
     {

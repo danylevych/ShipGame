@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotPref: {fileID: 1323626686544769702, guid: e7b7a8eab89a74c40ab98dce0377a3bb, type: 3}
-  positionFirst: {x: 0, y: 0, z: 9}
-  offsetPos: 2
+  positionFirst: {x: 0, y: 0, z: 20}
+  offsetPos: 8
   countOfDots: 13

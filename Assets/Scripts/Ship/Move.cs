@@ -13,7 +13,6 @@ public class Move : MonoBehaviour
     private bool isRotation; 
     private Vector3 rememberRotLeft;
     private Vector3 rememberRotRight;
-    // private Vector3 rememberRotRight;
 
     struct IsPressed
     {
@@ -24,9 +23,9 @@ public class Move : MonoBehaviour
         public bool Space;
     }
 
-    IsPressed isPressed;
+    private IsPressed isPressed;
 
-    void Start()
+    private void Start()
     {
         rememberRotLeft = new Vector3(0f, 0f, 1);
         rememberRotRight = new Vector3(0f, 0f, -1);
@@ -42,7 +41,14 @@ public class Move : MonoBehaviour
         isPressed.Space = false;
     }
 
-    void Update()
+    private void Update()
+    {
+        KeyInput();
+
+        MoveShip();
+    }
+
+    private void KeyInput()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -88,12 +94,9 @@ public class Move : MonoBehaviour
         {
             isPressed.Space = false;
         }
-
-
-        KeyInput();
     }
 
-    void KeyInput()
+    private void MoveShip()
     {
         isRotation = false;
 
@@ -122,16 +125,7 @@ public class Move : MonoBehaviour
             isRotation = true;
         }
 
-
-        obj.transform.position += moveTo * speed * Time.deltaTime;
-
-        float currentAngle = LimitAngle(obj.transform.eulerAngles.z);
-
-        float clampedAngle = Mathf.Clamp(currentAngle, -maxMinRotationAngle, maxMinRotationAngle);
-        var temp = Quaternion.Euler(0, 0, clampedAngle).eulerAngles;
-
-        transform.eulerAngles = temp += speed * Time.deltaTime * rotation;
-
+        ShipMoving(moveTo, rotation);
 
         if (!isRotation)
         {
@@ -141,10 +135,10 @@ public class Move : MonoBehaviour
                 {
                     obj.transform.eulerAngles += 2 * speed * Time.deltaTime * (rememberRotLeft);
                 }
-                else if(LimitAngle(obj.transform.eulerAngles.z) > 0)
+                else if (LimitAngle(obj.transform.eulerAngles.z) > 0)
                 {
                     obj.transform.eulerAngles += 2 * speed * Time.deltaTime * (rememberRotRight);
-                }                   
+                }
             }
             else if (System.Math.Abs((int)LimitAngle(obj.transform.eulerAngles.z)) - 0 < 0.1)
             {
@@ -154,7 +148,7 @@ public class Move : MonoBehaviour
     }
 
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         float planeAngle = LimitAngle(obj.transform.eulerAngles.z);
         float planeNewAngle = Mathf.Clamp(planeAngle, -7, 7);
@@ -167,5 +161,17 @@ public class Move : MonoBehaviour
     private float LimitAngle(float angle)
     {
         return (angle > 180) ? angle - 360 : angle;
+    }
+
+    private void ShipMoving(Vector3 moveTo, Vector3 rotation)
+    {
+        obj.transform.position += moveTo * speed * Time.deltaTime;
+
+        float currentAngle = LimitAngle(obj.transform.eulerAngles.z);
+
+        float clampedAngle = Mathf.Clamp(currentAngle, -maxMinRotationAngle, maxMinRotationAngle);
+        var temp = Quaternion.Euler(0, 0, clampedAngle).eulerAngles;
+
+        transform.eulerAngles = temp + speed * Time.deltaTime * rotation;
     }
 }
