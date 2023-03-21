@@ -707,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitUI: {fileID: 233645359}
+  loadingScene: {fileID: 1223647679}
 --- !u!1 &218851560
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,10 +951,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1723734824}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 198738277}
+        m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6361,6 +6362,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!1 &1223647679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3266350808521673616, guid: 0d42da8a0f9645a43be82a3301011529, type: 3}
+  m_PrefabInstance: {fileID: 2086257501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1499016514
 GameObject:
   m_ObjectHideFlags: 0
@@ -6589,17 +6595,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663666223}
   m_CullTransparentMesh: 1
---- !u!114 &1723734824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3665156681357079887, guid: 0d42da8a0f9645a43be82a3301011529, type: 3}
-  m_PrefabInstance: {fileID: 2086257501}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a422bd901291e3458fc7d50b8ed5ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1944045070
 GameObject:
   m_ObjectHideFlags: 0

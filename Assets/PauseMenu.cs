@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject loadingScene;
 
     public static bool isPauseMenuActive = false;
     void Awake()
@@ -34,10 +35,17 @@ public class PauseMenu : MonoBehaviour
         isPauseMenuActive = false;
     }
 
-    private void Pause()
+    public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPauseMenuActive = true;
+    }
+
+    public void Menu()
+    {
+        Time.timeScale = 1f;
+        loadingScene.SetActive(true);
+        SceneLoader.instance.LoadScene("MainMenu");
     }
 }

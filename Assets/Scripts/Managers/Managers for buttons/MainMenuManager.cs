@@ -4,7 +4,13 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject exitUI;
+    [SerializeField] private GameObject loadingScene;
 
+    public void Play()
+    {
+        loadingScene.SetActive(true);
+        SceneLoader.instance.LoadScene("Game");
+    }
 
     public void Exit()
     {

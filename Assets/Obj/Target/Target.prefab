@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3012785800688902623}
   - component: {fileID: 5703350871876896545}
   - component: {fileID: 8911351031966642831}
+  - component: {fileID: 2404949224683365735}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -132,3 +133,23 @@ MonoBehaviour:
   speedHint: 10
   hintPref: {fileID: 6883280391867954306, guid: 58f30837a9e0d4141bd930265344a8e4, type: 3}
   explosionPref: {fileID: 6655255475426102595, guid: 6bbdbbd71476068468e8af35e361c056, type: 3}
+--- !u!95 &2404949224683365735
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474341614459329759}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a17833490468b9c43aa4d5273583f51e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

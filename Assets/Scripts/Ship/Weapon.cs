@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Transform firePoit;
-    [SerializeField]
-    private GameObject bullet;
+    [SerializeField] private Transform leftFirePoit;
+    [SerializeField] private Transform rightFirePoit;
+    [SerializeField] private GameObject bulletPref;
 
     public float speed = 10;
     private bool isPressSpace;
+    private bool isPressReload;
     private float timeOfEachBullet;
-
 
     private void Start()
     {
         isPressSpace = false;
+        isPressReload = false;
         timeOfEachBullet = 0f;
     }
 
-    void Update()
+    private void Update()
     {
         ChackInput();
 
-        timeOfEachBullet += Time.deltaTime;
-
-        if (isPressSpace && timeOfEachBullet >= 0.17f)
+        if (!isPressReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isPressSpace)
         {
             Shoot();
-            timeOfEachBullet = 0f;
+            Tools.BulletLimit.AddCountBullet();
+        }
+        else if (isPressReload)
+        {
+            Reload();
         }
     }
 
@@ -42,14 +45,35 @@ public class Weapon : MonoBehaviour
         {
             isPressSpace = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.R) || Tools.BulletLimit.IsReload())
+        {
+            isPressReload = true;
+        }
     }
 
-    void Shoot()
+    private void Shoot()
     {
-        if (bullet != null)
+        if (bulletPref != null)
         {
-            GameObject newBullet = Instantiate(bullet, firePoit.position, Quaternion.identity);
-            Destroy(newBullet, 1f);
+            GameObject leftBullet = Instantiate(bulletPref, leftFirePoit.position, Quaternion.identity);
+            GameObject rightBullet = Instantiate(bulletPref, rightFirePoit.position, Quaternion.identity);
+
+            Destroy(leftBullet, 1f);
+            Destroy(rightBullet, 1f);
+        }
+    }
+
+    private void Reload()
+    {
+        if (Tools.Clock.CheckTime(Tools.BulletLimit.TimeOneBullet))
+        {
+            Tools.BulletLimit.ResetCount();
+        }
+
+        if (Tools.BulletLimit.CountBullet == 0)
+        {
+            isPressReload = false;
         }
     }
 }

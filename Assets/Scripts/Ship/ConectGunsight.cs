@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class ConectGunsight : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject gunsightPref;
+    [SerializeField] private Transform shipPosition;
+    [SerializeField] private GameObject gunsightPref;
     
-    [SerializeField]
-    private Transform shipPosition;
-
     private GameObject gunsight;
 
     private void Start()
@@ -19,7 +16,7 @@ public class ConectGunsight : MonoBehaviour
 
     void Update()
     {
-        var dots = gunsight.GetComponent<Dots>();
+        Dots dots = gunsight.GetComponent<Dots>();
         if (dots != null)
         {
             dots.SetPosForAllDots(gunsight.transform.position);
