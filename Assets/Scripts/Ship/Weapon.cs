@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -9,14 +7,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject bulletPref;
 
     public float speed = 10;
+    private bool isReload;
     private bool isPressSpace;
-    private bool isPressReload;
     private float timeOfEachBullet;
 
     private void Start()
     {
         isPressSpace = false;
-        isPressReload = false;
+        isReload = false;
         timeOfEachBullet = 0f;
     }
 
@@ -24,15 +22,22 @@ public class Weapon : MonoBehaviour
     {
         ChackInput();
 
-        if (!isPressReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isPressSpace)
+        if (!isReload)
+        {
+            BulletUI.instance.Normal();
+        }
+
+        if (!isReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isPressSpace)
         {
             Shoot();
             Tools.BulletLimit.AddCountBullet();
         }
-        else if (isPressReload)
+        else if (isReload)
         {
             Reload();
         }
+
+
     }
 
     private void ChackInput()
@@ -48,7 +53,7 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) || Tools.BulletLimit.IsReload())
         {
-            isPressReload = true;
+            isReload = true;
         }
     }
 
@@ -66,6 +71,7 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
+        BulletUI.instance.Reload();
         if (Tools.Clock.CheckTime(Tools.BulletLimit.TimeOneBullet))
         {
             Tools.BulletLimit.ResetCount();
@@ -73,7 +79,7 @@ public class Weapon : MonoBehaviour
 
         if (Tools.BulletLimit.CountBullet == 0)
         {
-            isPressReload = false;
+            isReload = false;
         }
     }
 }

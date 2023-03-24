@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -10,6 +10,13 @@ public class MainMenuManager : MonoBehaviour
     {
         loadingScene.SetActive(true);
         SceneLoader.instance.LoadScene("Game");
+    }
+
+    public void Option()
+    {
+        loadingScene.SetActive(true);
+        SceneLoader.PreviousScene = "MainMenu";
+        SceneLoader.instance.LoadScene("Option");
     }
 
     public void Exit()

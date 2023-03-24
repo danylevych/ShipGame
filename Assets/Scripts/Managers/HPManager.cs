@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -8,8 +6,7 @@ public class HPManager : MonoBehaviour
 {
     public static HPManager instance;
 
-    [SerializeField]
-    private Text hpText;
+    [SerializeField] private Text hpText;
 
     private int hp = 100;
     private string typeHP = "█";

@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dots : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject dotPref;
-    [SerializeField]
-    private Vector3 positionFirst;
+    [SerializeField] private GameObject dotPref;
+    [SerializeField] private Vector3 positionFirst;
     
     private GameObject[] dots;
     public int offsetPos = 3;

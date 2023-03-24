@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Star : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject star;
+    [SerializeField] private GameObject star;
 
     void Start()
     {

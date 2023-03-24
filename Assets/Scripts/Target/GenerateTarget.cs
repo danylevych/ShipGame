@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GenerateTarget : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject targetPref;
+    [SerializeField] private GameObject targetPref;
 
     public float timeGenerate;
 

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
 {
     public float speed = 12;
-    public GameObject obj;
-
+    [SerializeField] private GameObject obj;
 
     private float maxMinRotationAngle;
 
@@ -24,6 +21,7 @@ public class Move : MonoBehaviour
     }
 
     private IsPressed isPressed;
+
 
     private void Start()
     {

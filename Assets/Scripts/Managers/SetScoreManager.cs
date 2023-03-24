@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class SetScoreManager : MonoBehaviour
 {
-    [SerializeField]
-    private Text score;
-    [SerializeField]
-    private Text bestScore;
+    [SerializeField] private Text score;
+    [SerializeField] private Text bestScore;
 
     void Start()
     {

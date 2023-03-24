@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject hitting;
+    [SerializeField] private GameObject hitting;
 
     public float speed = 300f;
 
@@ -20,7 +17,6 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         GameObject leftWing = GameObject.Find("Left");
-        GameObject rightWing = GameObject.Find("Right");
 
         startTime = Time.time;
         target = new Vector3(0, 0, Camera.main.farClipPlane);

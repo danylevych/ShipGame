@@ -1,7 +1,8 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
+
 
 public class SceneLoader : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class SceneLoader : MonoBehaviour
 
     [SerializeField] private Slider loading;
     [SerializeField] private GameObject loadingScreen;
+
+    public static string PreviousScene { get; set; }
 
     private void Awake()
     {
@@ -22,6 +25,15 @@ public class SceneLoader : MonoBehaviour
     {
         loadingScreen.SetActive(true);
         StartCoroutine(LoadSceneAsynchronously(sceneName));
+    }
+
+    public void LoadPreviousScene()
+    {
+        if (PreviousScene != null)
+        {
+            loadingScreen.SetActive(true);
+            StartCoroutine(LoadSceneAsynchronously(PreviousScene));
+        }
     }
 
     IEnumerator LoadSceneAsynchronously(string sceneName)
