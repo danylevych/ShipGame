@@ -31,9 +31,13 @@ public class SceneLoader : MonoBehaviour
     {
         if (PreviousScene != null)
         {
-            loadingScreen.SetActive(true);
-            StartCoroutine(LoadSceneAsynchronously(PreviousScene));
+            Invoke(nameof(LoadPreviousSceneDelayed), 0.3f);
         }
+    }
+
+    private void LoadPreviousSceneDelayed()
+    {
+        SceneManager.LoadScene(PreviousScene);
     }
 
     IEnumerator LoadSceneAsynchronously(string sceneName)

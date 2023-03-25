@@ -1374,6 +1374,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6779977375588331944}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &4371444281313936407
 GameObject:
@@ -2109,7 +2121,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4371444280868727135}
+        m_TargetAssemblyTypeName: SettingEvent, Assembly-CSharp
+        m_MethodName: SetVolumeEffectSound
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4371444281702115966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2164,7 @@ Transform:
   m_Children:
   - {fileID: 4371444280561070208}
   - {fileID: 4371444280868727134}
+  - {fileID: 6119619547631419079}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2987,9 +3012,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadPreviousScene
+      - m_Target: {fileID: 6779977375588331944}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3255,3 +3280,70 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'SCREEN SIZE:'
+--- !u!1001 &2319158044450891956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4371444281702115967}
+    m_Modifications:
+    - target: {fileID: 2844632747588206679, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_Name
+      value: 'ButtonAudio '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+--- !u!4 &6119619547631419079 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8413300772148041331, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+  m_PrefabInstance: {fileID: 2319158044450891956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6779977375588331944 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9095050733767399708, guid: 865e31391842bbc4a877f77d8caefa05, type: 3}
+  m_PrefabInstance: {fileID: 2319158044450891956}
+  m_PrefabAsset: {fileID: 0}
