@@ -30,10 +30,23 @@ public class GenerateTarget : MonoBehaviour
 
     private void Start()
     {
+        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        int partWidth = (int)(screenBounds.x / 2);
+        int partHeight = (int)(screenBounds.y / 2);
+
+        Vector3 centerWidth = new Vector3(partWidth, 0, 0);
+        Vector3 centerHeight = new Vector3(0, partHeight, 0);
+
+        Vector3 centerCamera = new Vector3(0, 0, Camera.main.farClipPlane * 3);
+
+        int xMax = (int)Vector3.Lerp(centerWidth, centerCamera, 0.6f).x + 2;
+        int yMax = (int)Vector3.Lerp(centerHeight, centerCamera, 0.6f).y * 2;
+
+
         timeDeath = 0f;
 
-        x = new Point(-8, 8);
-        y = new Point(-6, 6);
+        x = new Point(-xMax, xMax);
+        y = new Point(-yMax, yMax);
         z = new Point(60, 65);
         
         GetTarget();

@@ -133,6 +133,7 @@ MonoBehaviour:
   speedHint: 10
   hintPref: {fileID: 6883280391867954306, guid: 58f30837a9e0d4141bd930265344a8e4, type: 3}
   explosionPref: {fileID: 6655255475426102595, guid: 6bbdbbd71476068468e8af35e361c056, type: 3}
+  explosionAudio: {fileID: 0}
 --- !u!95 &2404949224683365735
 Animator:
   serializedVersion: 5

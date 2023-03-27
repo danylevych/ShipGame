@@ -31,12 +31,12 @@ namespace Tools
             }
         }
 
-        private void Awake()
+        private void Start()
         {
-            if(gameObject.tag == "FirstShip")
+            if(gameObject.tag == "StandartShip")
             {
-                maxCountVolley = 15;
-                float timeAllReload = 3f;
+                maxCountVolley = UserShip.instance.VoleyCount;
+                float timeAllReload = UserShip.instance.ReloadTime;
                 timeOneReload = timeAllReload / maxCountVolley;
             }
         }

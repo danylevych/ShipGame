@@ -2144,7 +2144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4371444281702115967}
   m_Layer: 0
-  m_Name: Option
+  m_Name: OptionPref
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

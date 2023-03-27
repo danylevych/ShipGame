@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Target
   - ExitUI
-  - FirstShip
   - Music
+  - StandartShip
+  - Test
+  - FirstShip
   layers:
   - Default
   - TransparentFX

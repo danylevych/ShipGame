@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf24b2104ea3594a98bcdf03eac5fe2, type: 3}
+  m_Name: ShipsDataBase
+  m_EditorClassIdentifier: 
+  ships:
+  - name: StandartShip
+    shipSprite: {fileID: 21300000, guid: d600271598f82af48b5516ce5daab25b, type: 3}
+    shootingAudio: {fileID: 8300000, guid: d24575b4018b34d41adaa5d2805aaf5e, type: 3}
+    bulletPref: {fileID: 643418622834942123, guid: 9025dc07dafca6347805dd0a8ece37a7, type: 3}
+    leftWeapon: {x: -1.4, y: -0.2, z: 0.01}
+    rightWeapon: {x: 1.4, y: -0.2, z: 0.01}
+    voley: 20
+    reloadingTime: 3

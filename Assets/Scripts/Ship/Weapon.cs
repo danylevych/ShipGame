@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Transform leftFirePoit;
-    [SerializeField] private Transform rightFirePoit;
-    [SerializeField] private GameObject bulletPref;
+    [SerializeField] public GameObject bulletPref;
+    [SerializeField] public Transform leftFirePoit;
+    [SerializeField] public Transform rightFirePoit;
+    [SerializeField] public AudioSource shootingAudio;
 
     public float speed = 10;
     private bool isReload;
@@ -61,6 +62,8 @@ public class Weapon : MonoBehaviour
     {
         if (bulletPref != null)
         {
+            shootingAudio.Play();
+
             GameObject leftBullet = Instantiate(bulletPref, leftFirePoit.position, Quaternion.identity);
             GameObject rightBullet = Instantiate(bulletPref, rightFirePoit.position, Quaternion.identity);
 

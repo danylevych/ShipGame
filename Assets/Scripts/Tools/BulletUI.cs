@@ -8,6 +8,8 @@ public class BulletUI: MonoBehaviour
     [SerializeField] private Text countText;
     [SerializeField] private Animator reloading;
     [SerializeField] private Animator bulletImgreload;
+
+
     private void Awake()
     {
         if(instance == null)

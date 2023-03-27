@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private GameObject hitting;
+    [SerializeField] private AudioSource hittingAudio;
 
     public float speed = 300f;
 
@@ -53,7 +54,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Target")
-        { 
+        {
+            hittingAudio.Play();
+
             Target target = other.GetComponent<Target>();
 
             if (target != null)
@@ -64,7 +67,7 @@ public class Bullet : MonoBehaviour
             GameObject e = Instantiate(hitting) as GameObject;
             e.transform.position = transform.position;
 
-            Destroy(gameObject);
+            Destroy(gameObject, 0.2f);
             Destroy(e, 0.25f);
         }
     }
