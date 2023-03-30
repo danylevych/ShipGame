@@ -67,8 +67,8 @@ public class Weapon : MonoBehaviour
             GameObject leftBullet = Instantiate(bulletPref, leftFirePoit.position, Quaternion.identity);
             GameObject rightBullet = Instantiate(bulletPref, rightFirePoit.position, Quaternion.identity);
 
-            Destroy(leftBullet, 1f);
-            Destroy(rightBullet, 1f);
+            Destroy(leftBullet, 2f);
+            Destroy(rightBullet, 2f);
         }
     }
 

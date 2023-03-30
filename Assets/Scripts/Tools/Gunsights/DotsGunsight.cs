@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Dots : MonoBehaviour
+public class DotsGunsight : IGunsight
 {
     [SerializeField] private GameObject dotPref;
     [SerializeField] private Vector3 positionFirst;
     
     private GameObject[] dots;
-    public int offsetPos = 3;
-    public int countOfDots = 13;
+    public int offsetPos;
+    public int countOfDots;
 
 
     private void Start()
@@ -23,8 +23,7 @@ public class Dots : MonoBehaviour
         }
     }
 
-
-    public void SetPosForAllDots(Vector3 newPos)
+    public override void SetPosition(Vector3 newPos)
     {
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.z += Camera.main.farClipPlane;

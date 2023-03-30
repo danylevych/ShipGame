@@ -10,6 +10,8 @@ TagManager:
   - StandartShip
   - Test
   - FirstShip
+  - DotGunsight
+  - SqureGunsight
   layers:
   - Default
   - TransparentFX

@@ -3,21 +3,25 @@ using UnityEngine;
 public class ConectGunsight : MonoBehaviour
 {
     [SerializeField] private Transform shipPosition;
-    [SerializeField] private GameObject gunsightPref;
-    
+    [SerializeField] private GameObject dotGunsightPref;
+    [SerializeField] private GameObject squreGunsightPref;
+
     private GameObject gunsight;
 
     private void Start()
     {
-        gunsight = Instantiate(gunsightPref, shipPosition);
+        gunsight = Instantiate((PlayerPrefs.GetInt("TypeGunsight", 1) == 0 ? dotGunsightPref : squreGunsightPref), shipPosition);
     }
 
     void Update()
     {
-        Dots dots = gunsight.GetComponent<Dots>();
-        if (dots != null)
+        if (gunsight.tag == "DotGunsight")
         {
-            dots.SetPosForAllDots(gunsight.transform.position);
+            gunsight.GetComponent<DotsGunsight>()?.SetPosition(gunsight.transform.position);
+        }
+        else
+        {
+            gunsight.GetComponent<SqureGunsight>()?.SetPosition(shipPosition.transform.position);
         }
     }
 }

@@ -2,14 +2,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    public float speed = 12;
+    [SerializeField] private float speed;
     [SerializeField] private GameObject obj;
-
-    private float maxMinRotationAngle;
-
-    private bool isRotation; 
-    private Vector3 rememberRotLeft;
-    private Vector3 rememberRotRight;
+    [SerializeField] private float maxMinRotationAngle;
 
     struct IsPressed
     {
@@ -25,13 +20,6 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
-        rememberRotLeft = new Vector3(0f, 0f, 1);
-        rememberRotRight = new Vector3(0f, 0f, -1);
-
-        maxMinRotationAngle = 20;
-
-        isRotation = false;
-
         isPressed.A = false;
         isPressed.W = false;
         isPressed.D = false;
@@ -44,6 +32,16 @@ public class Move : MonoBehaviour
         KeyInput();
 
         MoveShip();
+    }
+
+    private void LateUpdate()
+    {
+        float planeAngle = LimitAngle(obj.transform.eulerAngles.z);
+        float planeNewAngle = Mathf.Clamp(Mathf.LerpAngle(Camera.main.transform.rotation.z, planeAngle, 0.25f), -10, 10);
+
+        Camera.main.transform.rotation = Quaternion.Inverse(Quaternion.Euler(obj.transform.rotation.eulerAngles.x,
+                                                                             obj.transform.rotation.eulerAngles.y,
+                                                                             planeNewAngle));
     }
 
     private void KeyInput()
@@ -96,10 +94,7 @@ public class Move : MonoBehaviour
 
     private void MoveShip()
     {
-        isRotation = false;
-
         Vector3 moveTo = new(0, 0, 0);
-        Vector3 rotation = new(0, 0, 0);
 
         if (isPressed.W)
         {
@@ -113,47 +108,19 @@ public class Move : MonoBehaviour
         if (isPressed.A && !isPressed.D)
         {
             moveTo.x = -1;
-            rotation.z = rememberRotLeft.z;
-            isRotation = true;
+            RortateShip(maxMinRotationAngle, Time.deltaTime * 2);
         }
         else if (isPressed.D && !isPressed.A)
         {
             moveTo.x = 1;
-            rotation.z = rememberRotRight.z;
-            isRotation = true;
+            RortateShip(-maxMinRotationAngle, Time.deltaTime * 2);
         }
-
-        ShipMoving(moveTo, rotation);
-
-        if (!isRotation)
+        else
         {
-            if ((int)LimitAngle(obj.transform.eulerAngles.z) != 0)
-            {
-                if (LimitAngle(obj.transform.eulerAngles.z) < 0)
-                {
-                    obj.transform.eulerAngles += 2 * speed * Time.deltaTime * (rememberRotLeft);
-                }
-                else if (LimitAngle(obj.transform.eulerAngles.z) > 0)
-                {
-                    obj.transform.eulerAngles += 2 * speed * Time.deltaTime * (rememberRotRight);
-                }
-            }
-            else if (System.Math.Abs((int)LimitAngle(obj.transform.eulerAngles.z)) - 0 < 0.1)
-            {
-                obj.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            }
+            RortateShip(0, Time.deltaTime * 4);
         }
-    }
 
-
-    private void LateUpdate()
-    {
-        float planeAngle = LimitAngle(obj.transform.eulerAngles.z);
-        float planeNewAngle = Mathf.Clamp(planeAngle, -7, 7);
-
-        Camera.main.transform.rotation = Quaternion.Inverse(Quaternion.Euler(obj.transform.rotation.eulerAngles.x,
-                                                                             obj.transform.rotation.eulerAngles.y,
-                                                                             planeNewAngle / 1.72f));
+        ShipMoving(moveTo);
     }
 
     private float LimitAngle(float angle)
@@ -161,15 +128,20 @@ public class Move : MonoBehaviour
         return (angle > 180) ? angle - 360 : angle;
     }
 
-    private void ShipMoving(Vector3 moveTo, Vector3 rotation)
+    private void ShipMoving(Vector3 moveTo)
     {
         obj.transform.position += moveTo * speed * Time.deltaTime;
+    }
 
-        float currentAngle = LimitAngle(obj.transform.eulerAngles.z);
+    private void RortateShip(float angle, float speed)
+    {
+        float currentAngle = LimitAngle(obj.transform.rotation.eulerAngles.z);
+       
 
-        float clampedAngle = Mathf.Clamp(currentAngle, -maxMinRotationAngle, maxMinRotationAngle);
-        var temp = Quaternion.Euler(0, 0, clampedAngle).eulerAngles;
-
-        transform.eulerAngles = temp + speed * Time.deltaTime * rotation;
+        transform.rotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x,
+                                              obj.transform.rotation.eulerAngles.y,
+                                              Mathf.Clamp(Mathf.LerpAngle(currentAngle, angle, speed),
+                                              -maxMinRotationAngle,
+                                              maxMinRotationAngle));
     }
 }

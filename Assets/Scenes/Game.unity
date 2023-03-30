@@ -7554,7 +7554,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipPosition: {fileID: 857553725}
-  gunsightPref: {fileID: 7408994721853607032, guid: d0145682bf6c0bf48bd1ee8796cee270, type: 3}
+  dotGunsightPref: {fileID: 7408994721853607032, guid: d0145682bf6c0bf48bd1ee8796cee270, type: 3}
+  squreGunsightPref: {fileID: 585627532470321035, guid: f20ce78028d4ea44e9c38c9e4b7aaa7c, type: 3}
 --- !u!114 &1755868744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7567,7 +7568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cd312c9b29918488a5f8c685ac6d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 30
   obj: {fileID: 1755868735}
 --- !u!114 &1755868745
 MonoBehaviour:

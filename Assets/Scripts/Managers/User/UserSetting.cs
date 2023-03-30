@@ -8,8 +8,8 @@ public class UserSetting : MonoBehaviour
 
     private void Start()
     {
-        mixer.SetFloat("BackVolume", (-80 + PlayerPrefs.GetFloat("BackVolume", 1) * 100));
-        mixer.SetFloat("EffectVolume", (-80 + PlayerPrefs.GetFloat("EffectVolume", 1) * 100));
+        mixer.SetFloat("BackVolume", Mathf.Log10(PlayerPrefs.GetFloat("BackVolume", 1)) * 50);
+        mixer.SetFloat("EffectVolume", Mathf.Log10(PlayerPrefs.GetFloat("EffectVolume", 1)) * 50);
         Screen.fullScreen = System.Convert.ToBoolean(PlayerPrefs.GetInt("IsFullscreen", 1));
     }
 }

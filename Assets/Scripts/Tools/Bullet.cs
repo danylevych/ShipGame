@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private float speed = 300f;
     [SerializeField] private GameObject hitting;
-    [SerializeField] private AudioSource hittingAudio;
-
-    public float speed = 300f;
 
     private Vector3 startPos;
     private Vector3 target;
@@ -44,19 +42,17 @@ public class Bullet : MonoBehaviour
         float z = Mathf.Lerp(startPos.z, target.z, fracJourney);
 
         transform.position = new Vector3(x + offset, y, z);
-        
-        /*if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
+
+        if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
         {
-            transform.localScale += new Vector3(-0.3f, -0.3f, -0.3f) * Time.deltaTime;
-        }*/
+            transform.localScale += new Vector3(-0.25f, -0.25f, -0.25f) * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Target")
         {
-            hittingAudio.Play();
-
             Target target = other.GetComponent<Target>();
 
             if (target != null)
@@ -67,7 +63,7 @@ public class Bullet : MonoBehaviour
             GameObject e = Instantiate(hitting) as GameObject;
             e.transform.position = transform.position;
 
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject);
             Destroy(e, 0.25f);
         }
     }

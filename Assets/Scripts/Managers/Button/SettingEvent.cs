@@ -9,7 +9,7 @@ public class SettingEvent : MonoBehaviour
     [SerializeField] private Slider backMusic;
     [SerializeField] private Slider effectMusic;
     [SerializeField] private Toggle screen;
-
+    
     private void Awake()
     {
         backMusic.value = PlayerPrefs.GetFloat("BackVolume", 1);
@@ -19,13 +19,13 @@ public class SettingEvent : MonoBehaviour
 
     public void SetVolumeBackSound(float value)
     {
-        mixer.SetFloat("BackVolume", (-80 + value * 100));
+        mixer.SetFloat("BackVolume", Mathf.Log10(value) * 50);
         PlayerPrefs.SetFloat("BackVolume", value);
     }
 
     public void SetVolumeEffectSound(float value)
     {
-        mixer.SetFloat("EffectVolume", (-80 + value * 100));
+        mixer.SetFloat("EffectVolume", Mathf.Log10(value) * 50);
         PlayerPrefs.SetFloat("EffectVolume", value);
     }
 
@@ -33,5 +33,10 @@ public class SettingEvent : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("IsFullscreen", System.Convert.ToInt32(isFullscreen));
+    }
+
+    public void SetsGunsight(int id)
+    {
+        PlayerPrefs.SetInt("TypeGunsight", id);
     }
 }
