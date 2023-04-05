@@ -9,12 +9,14 @@ public class SettingEvent : MonoBehaviour
     [SerializeField] private Slider backMusic;
     [SerializeField] private Slider effectMusic;
     [SerializeField] private Toggle screen;
-    
+    [SerializeField] private AudioSource button;
+
+
     private void Awake()
     {
         backMusic.value = PlayerPrefs.GetFloat("BackVolume", 1);
         effectMusic.value = PlayerPrefs.GetFloat("EffectVolume", 1);
-        screen.enabled = System.Convert.ToBoolean(PlayerPrefs.GetInt("IsFullscreen", 1));
+        screen.isOn = System.Convert.ToBoolean(PlayerPrefs.GetInt("IsFullscreen", 1));
     }
 
     public void SetVolumeBackSound(float value)
@@ -31,6 +33,7 @@ public class SettingEvent : MonoBehaviour
 
     public void SetFullscreen(bool isFullscreen)
     {
+        button.Play();
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("IsFullscreen", System.Convert.ToInt32(isFullscreen));
     }

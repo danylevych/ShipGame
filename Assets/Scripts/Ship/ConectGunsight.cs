@@ -15,13 +15,6 @@ public class ConectGunsight : MonoBehaviour
 
     void Update()
     {
-        if (gunsight.tag == "DotGunsight")
-        {
-            gunsight.GetComponent<DotsGunsight>()?.SetPosition(gunsight.transform.position);
-        }
-        else
-        {
-            gunsight.GetComponent<SqureGunsight>()?.SetPosition(shipPosition.transform.position);
-        }
+        gunsight.GetComponent<IGunsight>()?.SetPosition(shipPosition.transform.position);
     }
 }
