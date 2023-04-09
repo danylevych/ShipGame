@@ -1,13 +1,20 @@
 using UnityEngine;
 
-public class DotsGunsight : IGunsight
+
+// +=========================================+
+// |                                         |
+// | This script describes the dot gunsight. |
+// |                                         |
+// +=========================================+
+
+public class DotsGunsight : Gunsight
 {
     [SerializeField] private GameObject dotPref;
     [SerializeField] private Vector3 positionFirst;
     
-    private GameObject[] dots;
-    public int offsetPos;
-    public int countOfDots;
+    private GameObject[] dots;  // The array of the dots.
+    public int offsetPos;       // The offset between two dots.
+    public int countOfDots;     // The count of the dots in an array.
 
 
     private void Start()

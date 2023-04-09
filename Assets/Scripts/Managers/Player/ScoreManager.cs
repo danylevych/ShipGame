@@ -2,6 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+// +=========================================+
+// |                                         |
+// |  This script set the best and current   |
+// |       score into the game screen.       |
+// |                                         |
+// +=========================================+
+
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
@@ -19,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        bestScore = PlayerPrefs.GetInt("bestScore");
+        bestScore = PlayerPrefs.GetInt("bestScore", 0);
 
         scoreText.text = "SCORE: " + score.ToString();
         bestScoreText.text = "BEST SCORE: " + bestScore.ToString();

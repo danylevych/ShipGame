@@ -1,6 +1,13 @@
 using UnityEngine;
 
 
+// +=========================================+
+// |                                         |
+// | This script rotate the text according   |
+// |      to the user's ship rotation.       |
+// |                                         |
+// +=========================================+
+
 public class RotateText : MonoBehaviour
 {
     private void Start()

@@ -1,5 +1,12 @@
 ﻿using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |       This script counting time.        |
+// |                                         |
+// +=========================================+
+
 namespace Tools
 {
     public static class Clock 

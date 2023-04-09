@@ -1,5 +1,13 @@
 ﻿using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |  This script store needing information  |
+// |            about the ship.              |
+// |                                         |
+// +=========================================+
+
 [System.Serializable]
 public class Ship
 {
@@ -12,6 +20,6 @@ public class Ship
     public Vector3 leftWeapon;
     public Vector3 rightWeapon;
 
-    public int voley;
+    public int volley;
     public float reloadingTime;
 }

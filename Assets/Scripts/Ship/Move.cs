@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// | This script moves and rotates the ship. |
+// |                                         |
+// +=========================================+
+
 public class Move : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -36,6 +43,7 @@ public class Move : MonoBehaviour
 
     private void LateUpdate()
     {
+        // Rotating the camera in the opposite side that ship rotate.
         float planeAngle = LimitAngle(obj.transform.eulerAngles.z);
         float planeNewAngle = Mathf.Clamp(Mathf.LerpAngle(Camera.main.transform.rotation.z, planeAngle, 0.25f), -10, 10);
 
@@ -43,6 +51,7 @@ public class Move : MonoBehaviour
                                                                              obj.transform.rotation.eulerAngles.y,
                                                                              planeNewAngle));
     }
+
 
     private void KeyInput()
     {
@@ -108,16 +117,16 @@ public class Move : MonoBehaviour
         if (isPressed.A && !isPressed.D)
         {
             moveTo.x = -1;
-            RortateShip(maxMinRotationAngle, Time.deltaTime * 2);
+            RotateShip(maxMinRotationAngle, Time.deltaTime * 2);
         }
         else if (isPressed.D && !isPressed.A)
         {
             moveTo.x = 1;
-            RortateShip(-maxMinRotationAngle, Time.deltaTime * 2);
+            RotateShip(-maxMinRotationAngle, Time.deltaTime * 2);
         }
         else
         {
-            RortateShip(0, Time.deltaTime * 4);
+            RotateShip(0, Time.deltaTime * 4);
         }
 
         ShipMoving(moveTo);
@@ -133,11 +142,11 @@ public class Move : MonoBehaviour
         obj.transform.position += moveTo * speed * Time.deltaTime;
     }
 
-    private void RortateShip(float angle, float speed)
+    private void RotateShip(float angle, float speed)
     {
+        // Rotating the ship in the left or right side.
         float currentAngle = LimitAngle(obj.transform.rotation.eulerAngles.z);
-       
-
+ 
         transform.rotation = Quaternion.Euler(obj.transform.rotation.eulerAngles.x,
                                               obj.transform.rotation.eulerAngles.y,
                                               Mathf.Clamp(Mathf.LerpAngle(currentAngle, angle, speed),

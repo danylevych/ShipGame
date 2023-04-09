@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 
 
+// +=========================================+
+// |                                         |
+// |  This script limiting the bullet count. |
+// |                                         |
+// +=========================================+
+
 namespace Tools
 {
     [System.Serializable]
@@ -13,7 +19,6 @@ namespace Tools
                 return maxCountVolley;
             }
         }
-
 
         private static int countBullet = 0;
         public static int CountBullet {
@@ -31,11 +36,13 @@ namespace Tools
             }
         }
 
+
         private void Start()
         {
-            if(gameObject.tag == "StandartShip")
+            // Check what type have a user ship.
+            if(gameObject.tag == "StandartShip") 
             {
-                maxCountVolley = UserShip.instance.VoleyCount;
+                maxCountVolley = UserShip.instance.VolleyCount;
                 float timeAllReload = UserShip.instance.ReloadTime;
                 timeOneReload = timeAllReload / maxCountVolley;
             }

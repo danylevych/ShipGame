@@ -1,5 +1,13 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |   This script describes the weapon of   |
+// |                a ship.                  |
+// |                                         |
+// +=========================================+
+
 public class Weapon : MonoBehaviour
 {
     [SerializeField] public GameObject bulletPref;
@@ -9,26 +17,27 @@ public class Weapon : MonoBehaviour
 
     public float speed = 10;
     private bool isReload;
-    private bool isPressSpace;
+    private bool isShooting;
     private float timeOfEachBullet;
 
     private void Start()
     {
-        isPressSpace = false;
+        isShooting = false;
         isReload = false;
         timeOfEachBullet = 0f;
     }
 
     private void Update()
     {
-        ChackInput();
+        CheckInput();
 
         if (!isReload)
         {
             BulletUI.instance.Normal();
         }
-
-        if (!isReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isPressSpace)
+        
+        // If the weapon not reloads, the time between two bullet is normal and the shoot key was pressed.
+        if (!isReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isShooting)
         {
             Shoot();
             Tools.BulletLimit.AddCountBullet();
@@ -37,19 +46,17 @@ public class Weapon : MonoBehaviour
         {
             Reload();
         }
-
-
     }
 
-    private void ChackInput()
+    private void CheckInput()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            isPressSpace = true;
+            isShooting = true;
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
-            isPressSpace = false;
+            isShooting = false;
         }
 
         if (Input.GetKeyDown(KeyCode.R) || Tools.BulletLimit.IsReload())

@@ -1,6 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// +=========================================+
+// |                                         |
+// |  This script refreshes an information   |
+// |              for the volley.            |
+// |                                         |
+// +=========================================+
+
 public class BulletUI: MonoBehaviour
 {
     public static BulletUI instance;

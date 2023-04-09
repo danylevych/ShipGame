@@ -4,6 +4,12 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 
+// +=========================================+
+// |                                         |
+// |   This script open the loading scene.   |
+// |                                         |
+// +=========================================+
+
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
@@ -11,7 +17,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Slider loading;
     [SerializeField] private GameObject loadingScreen;
 
-    public static string PreviousScene { get; set; }
+    public static string PreviousScene { get; set; }    // Consist of information, which scene was the previous.
+
 
     private void Awake()
     {
@@ -21,12 +28,16 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
+    // ========================== Load Scene ==========================
     public void LoadScene(string sceneName)
     {
         loadingScreen.SetActive(true);
         StartCoroutine(LoadSceneAsynchronously(sceneName));
     }
+    // ================================================================
 
+
+    // ======================== Load Prev Scene =======================
     public void LoadPreviousScene()
     {
         if (PreviousScene != null)
@@ -39,6 +50,8 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene(PreviousScene);
     }
+    // ================================================================
+
 
     IEnumerator LoadSceneAsynchronously(string sceneName)
     {

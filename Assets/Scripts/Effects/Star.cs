@@ -1,5 +1,13 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |   This script set the stars to their    |
+// |          original position.             |
+// |                                         |
+// +=========================================+
+
 public class Star : MonoBehaviour
 {
     [SerializeField] private GameObject star;

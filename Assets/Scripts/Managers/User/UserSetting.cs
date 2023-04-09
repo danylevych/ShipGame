@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+
+// +=========================================+
+// |                                         |
+// |   This script set the user's settings.  |
+// |                                         |
+// +=========================================+
+
 public class UserSetting : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;

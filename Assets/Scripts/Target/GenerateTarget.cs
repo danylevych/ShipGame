@@ -1,6 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
+// +=========================================+
+// |                                         |
+// |   This script describes the weapon of   |
+// |                a ship.                  |
+// |                                         |
+// +=========================================+
 
 public class GenerateTarget : MonoBehaviour
 {
@@ -30,6 +36,7 @@ public class GenerateTarget : MonoBehaviour
 
     private void Start()
     {
+        // This piece of code finds the area when a target can be created.
         Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         int partWidth = (int)(screenBounds.x / 2);
         int partHeight = (int)(screenBounds.y / 2);
@@ -56,7 +63,7 @@ public class GenerateTarget : MonoBehaviour
     { 
         if (target == null)
         {
-            if (Tools.Clock.CheckTime(ref timeDeath, timeGenerate))
+            if (Tools.Clock.CheckTime(ref timeDeath, timeGenerate))  // Time between two target's generation. 
             {
                 GetTarget();
 
@@ -65,7 +72,7 @@ public class GenerateTarget : MonoBehaviour
             }
         }
 
-        if (Tools.Clock.CheckTime(ref timeOfLastTarget, 5f))
+        if (Tools.Clock.CheckTime(ref timeOfLastTarget, 5f))  // When collision for bullet and target doesn't happen.
         {
             HPManager.instance.DelHP();
             timeOfLastTarget = 0f;

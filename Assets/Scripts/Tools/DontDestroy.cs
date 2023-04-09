@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// | This script doesn't destroy game object.|
+// |                                         |
+// +=========================================+
+
 public class DontDestroy : MonoBehaviour
 {
     public string objectID;

@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |    This script describes the bullet.    |
+// |                                         |
+// +=========================================+
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 300f;
@@ -22,6 +29,7 @@ public class Bullet : MonoBehaviour
         startPos = transform.position;
         distance = Vector3.Distance(transform.position, target);
 
+        // Set the offset for the all bulet;
         if (Vector3.Distance(transform.position, leftWing.transform.position) <= 1)
         {
             offset = -0.5f;

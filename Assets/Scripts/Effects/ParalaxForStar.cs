@@ -1,6 +1,13 @@
 using UnityEngine;
 
 
+// +=========================================+
+// |                                         |
+// | This script returns the stars according |
+// |         to the user's mouse.            |
+// |                                         |
+// +=========================================+
+
 public class ParalaxForStar : MonoBehaviour
 {
     private Vector3 starRotation;

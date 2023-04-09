@@ -1,5 +1,13 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// | This is the field limit script for the  |
+// |                 ship.                   |
+// |                                         |
+// +=========================================+
+
 public class Boundaries : MonoBehaviour
 {
     private Vector2 screenBounds;

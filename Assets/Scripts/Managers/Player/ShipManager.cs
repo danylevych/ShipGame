@@ -1,5 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+
+
+// +=========================================+
+// |                                         |
+// | This script create DB for the game, that|
+// |        include the ships' info.         |
+// |                                         |
+// +=========================================+
 
 [CreateAssetMenu]
 public class ShipManager : ScriptableObject

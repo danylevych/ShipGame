@@ -1,6 +1,14 @@
 using UnityEngine;
 
-public class SqureGunsight : IGunsight
+
+// +=========================================+
+// |                                         |
+// |    This script describes the square     |
+// |                gunsight.                |
+// |                                         |
+// +=========================================+
+
+public class SquareGunsight : Gunsight
 {
     [SerializeField] private int distShipToGunsight;
 

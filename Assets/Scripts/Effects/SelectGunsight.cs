@@ -1,7 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// | This script set the current gunsight in |
+// |            Optione scene.               |
+// |                                         |
+// +=========================================+
 
 public class SelectGunsight : MonoBehaviour
 {
@@ -10,6 +15,7 @@ public class SelectGunsight : MonoBehaviour
     private void Update()
     {
         int userGunsight = PlayerPrefs.GetInt("TypeGunsight", 0);
+
         for(int i = 0; i < images.Length; i++)
         {
             if (i == userGunsight)

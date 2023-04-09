@@ -2,6 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+// +=========================================+
+// |                                         |
+// |   This script set the best and current  |
+// |       score into the GameOver scene.    |
+// |                                         |
+// +=========================================+
+
 public class SetScoreManager : MonoBehaviour
 {
     [SerializeField] private Text score;

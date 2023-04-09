@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+// +=========================================+
+// |                                         |
+// |    This script describes the target.    |
+// |                                         |
+// +=========================================+
+
 public class Target : MonoBehaviour
 {
     [SerializeField] private int health;
@@ -15,6 +22,7 @@ public class Target : MonoBehaviour
     {
         health = 100;
 
+        // Creating a hint that rotation around the target.
         startTargetPos = gameObject.transform.position;
         hint = Instantiate(hintPref, new Vector3(0, 0, -15), Quaternion.identity);
         hint.transform.localScale = new Vector3(20f, 20f, 20f);
