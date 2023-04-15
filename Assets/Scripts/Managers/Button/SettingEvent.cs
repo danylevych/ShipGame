@@ -18,12 +18,17 @@ public class SettingEvent : MonoBehaviour
     [SerializeField] private Toggle screen;        // Full screen.
     [SerializeField] private AudioSource button;
 
+    private bool isFirstCallToogle = true;
 
     private void Awake()
     {
         backMusic.value = PlayerPrefs.GetFloat("BackVolume", 1);
         effectMusic.value = PlayerPrefs.GetFloat("EffectVolume", 1);
-        screen.isOn = System.Convert.ToBoolean(PlayerPrefs.GetInt("IsFullscreen", 1));
+        if (screen != null)
+        {
+            screen.isOn = System.Convert.ToBoolean(PlayerPrefs.GetInt("IsFullscreen", 1));
+            isFirstCallToogle = false;
+        }
     }
 
     // =========================== BackSound Slider =============================
@@ -47,7 +52,10 @@ public class SettingEvent : MonoBehaviour
     // ========================== FullToggle Slider =============================
     public void SetFullscreen(bool isFullscreen)
     {
-        button.Play();
+        if (!isFirstCallToogle)
+        {
+            button.Play();
+        }
         Screen.fullScreen = isFullscreen;
         PlayerPrefs.SetInt("IsFullscreen", System.Convert.ToInt32(isFullscreen));
     }

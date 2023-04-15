@@ -19,5 +19,5 @@ MonoBehaviour:
     bulletPref: {fileID: 643418622834942123, guid: 9025dc07dafca6347805dd0a8ece37a7, type: 3}
     leftWeapon: {x: -1.4, y: -0.2, z: 0.01}
     rightWeapon: {x: 1.4, y: -0.2, z: 0.01}
-    voley: 20
+    volley: 20
     reloadingTime: 3

@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
  
     public static bool isPauseMenuActive = false;
 
+    private bool isOption = false;
 
     void Awake()
     {
@@ -26,7 +27,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isOption)
         {
             if (isPauseMenuActive)
             { 
@@ -67,6 +68,7 @@ public class PauseMenu : MonoBehaviour
     // ========================== Option Button ============================
     public void Options()
     {
+        isOption = true;
         buttonClick.Play();
         pauseMenu.SetActive(false);
         optionsScene.SetActive(true);
@@ -93,6 +95,7 @@ public class PauseMenu : MonoBehaviour
     // =========================== Back Button =============================
     public void Back()
     {
+        isOption = false;
         buttonClick.Play();
         optionsScene.SetActive(false);
         pauseMenu.SetActive(true);

@@ -354,7 +354,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU SHURE?
+  m_Text: YOU SURE?
 --- !u!222 &72370174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6526,7 +6526,7 @@ AudioSource:
   m_GameObject: {fileID: 1289097394}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: dbf64aae84b388c41afad2ba39007579, type: 2}
+  OutputAudioMixerGroup: {fileID: 4579604328336217784, guid: dbf64aae84b388c41afad2ba39007579, type: 2}
   m_audioClip: {fileID: 8300000, guid: 40c2b7df18e81d04c96dc20ffd5af74c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
