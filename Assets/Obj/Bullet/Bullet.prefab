@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 643418622834942120}
   - component: {fileID: 1998713000646576588}
   - component: {fileID: -5626428635294129291}
-  - component: {fileID: -7997849878121597139}
   - component: {fileID: -481564056762840186}
+  - component: {fileID: 7130209210748268408}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: MainCamera
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc36309459dd5c94a9b5057bfa70d65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitting: {fileID: 5807697566317355430, guid: 6c5c1b8a9101ef84f9aa2375b13dcac1, type: 3}
   speed: 80
+  hitting: {fileID: 5807697566317355430, guid: 6c5c1b8a9101ef84f9aa2375b13dcac1, type: 3}
 --- !u!54 &-5626428635294129291
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -66,20 +66,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &-7997849878121597139
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643418622834942123}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 0.3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &-481564056762840186
 AudioSource:
   m_ObjectHideFlags: 0
@@ -176,6 +162,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &7130209210748268408
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643418622834942123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6956184448162508062
 GameObject:
   m_ObjectHideFlags: 0

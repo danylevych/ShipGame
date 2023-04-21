@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     private float offset;
     private float distance;
     private float startTime;
-    
+    private float sizeSphere;
 
     private void Start()
     {
@@ -29,14 +29,16 @@ public class Bullet : MonoBehaviour
         startPos = transform.position;
         distance = Vector3.Distance(transform.position, target);
 
+        sizeSphere = gameObject.GetComponent<SphereCollider>().radius;
+
         // Set the offset for the all bulet;
         if (Vector3.Distance(transform.position, leftWing.transform.position) <= 1)
         {
-            offset = -0.5f;
+            offset = -0.46f;
         }
         else
         {
-            offset = 0.5f;
+            offset = 0.46f;
         }
     }
 
@@ -53,7 +55,8 @@ public class Bullet : MonoBehaviour
 
         if (transform.localScale.x >= 0f && transform.localScale.y >= 0f && transform.localScale.z >= 0f)
         {
-            transform.localScale += new Vector3(-0.25f, -0.25f, -0.25f) * Time.deltaTime;
+            transform.localScale += new Vector3(-0.15f, -0.15f, -0.15f) * Time.deltaTime;
+            gameObject.GetComponent<SphereCollider>().radius = sizeSphere;
         }
     }
 

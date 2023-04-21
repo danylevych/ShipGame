@@ -24,6 +24,9 @@ public class SquareGunsight : Gunsight
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.z += Camera.main.farClipPlane;
 
-        gameObject.transform.position = Vector3.LerpUnclamped(newPos, cameraPos, distShipToGunsight / 100f);
+        Vector3 pos = Vector3.LerpUnclamped(newPos, cameraPos, distShipToGunsight / 100f);
+        gameObject.transform.position = pos;
+
+        gameObject.transform.rotation = Quaternion.Euler(new Vector3(pos.x, pos.y, 0));
     }
 }
