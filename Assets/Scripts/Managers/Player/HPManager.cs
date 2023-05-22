@@ -14,7 +14,6 @@ public class HPManager : MonoBehaviour
     public static HPManager instance;
     
     [SerializeField] private Text hpText;
-    [SerializeField] private AudioSource gameOver;
 
     private int hp = 100;
     private string typeHP = "█";
@@ -49,7 +48,6 @@ public class HPManager : MonoBehaviour
 
         if (hp == 0)
         {
-            gameOver.Play();
             ScoreManager.instance.SaveScors();
             SceneManager.LoadScene("EndGame");
         }

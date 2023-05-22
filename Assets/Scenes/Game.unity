@@ -6801,7 +6801,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpText: {fileID: 1753305299}
-  gameOver: {fileID: 5482222919316378539, guid: a3b35ef8f54539048886f9196edfe746, type: 3}
 --- !u!114 &1380466075
 MonoBehaviour:
   m_ObjectHideFlags: 0
