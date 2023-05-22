@@ -19,7 +19,11 @@ public class Move : MonoBehaviour
         public bool S;
         public bool A;
         public bool D;
-        public bool Space;
+
+        public IsPressed(bool value = false)
+        {
+            W = S = A = D = value;
+        }
     }
 
     private IsPressed isPressed;
@@ -27,15 +31,12 @@ public class Move : MonoBehaviour
 
     private void Start()
     {
-        isPressed.A = false;
-        isPressed.W = false;
-        isPressed.D = false;
-        isPressed.S = false;
-        isPressed.Space = false;
+        isPressed = new IsPressed();
     }
 
     private void Update()
     {
+
         KeyInput();
 
         MoveShip();
@@ -89,15 +90,6 @@ public class Move : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.D))
         {
             isPressed.D = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isPressed.Space = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isPressed.Space = false;
         }
     }
 

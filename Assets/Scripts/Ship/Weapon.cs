@@ -33,10 +33,10 @@ public class Weapon : MonoBehaviour
 
         if (!isReload)
         {
-            BulletUI.instance.Normal();
+            BulletUI.instance.Normal();  // Setting the normal animation for UI.
         }
         
-        // If the weapon not reloads, the time between two bullet is normal and the shoot key was pressed.
+        // If the weapon doesn't reload, the time between two bullet is normal and the shoot key was pressed.
         if (!isReload && Tools.Clock.CheckTime(ref timeOfEachBullet, 0.17f) && isShooting)
         {
             Shoot();
@@ -58,8 +58,14 @@ public class Weapon : MonoBehaviour
         {
             isShooting = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.R) || Tools.BulletLimit.IsReload())
+        
+        /*
+            The isReload variable will get the value true when the key R will press,
+            and the guns will must reload, or count using bullets will be equal the 
+            maximum count in one volley, what wiil be mean - user used all bullets.
+        */
+        if ((Input.GetKeyDown(KeyCode.R) && Tools.BulletLimit.IsMustReloading()) ||
+            (Tools.BulletLimit.CountBullet == Tools.BulletLimit.MaxBulletVolley))
         {
             isReload = true;
         }
@@ -81,8 +87,9 @@ public class Weapon : MonoBehaviour
 
     private void Reload()
     {
-        BulletUI.instance.Reload();
-        if (Tools.Clock.CheckTime(Tools.BulletLimit.TimeOneBullet))
+        BulletUI.instance.Reload();  // Set the reloading animation.
+
+        if (Tools.Clock.CheckTime(Tools.BulletLimit.TimeOneBullet))  // Checking if a pair of bullet was insert in volley.
         {
             Tools.BulletLimit.ResetCount();
         }

@@ -48,14 +48,19 @@ namespace Tools
             }
         }
 
-        public static bool IsReload()
+        public static bool IsMustReloading()
         {
-            if (countBullet == maxCountVolley)
+            /*
+                The countBullet in the start of game equales 0, that is mean the volley
+                is full. But the maxCountVolley - some non zero value, consequently we
+                must use the below code or do samething like that countBullet = 0.
+            */
+            if (countBullet + maxCountVolley == maxCountVolley)
             {
-                return true;
+                return false;
             }
 
-            return false;
+            return true;
         }
 
         public static void AddCountBullet()
