@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
+        
         clickCounter = PlayerPrefs.GetInt("CountClicks", 0);
     }
 
