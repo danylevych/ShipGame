@@ -46,5 +46,12 @@ public class Target : MonoBehaviour
         hint.transform.localScale = Vector3.Lerp(hint.transform.localScale, hintPref.transform.localScale, Time.deltaTime * speedHint);
 
         hint.transform.position = Vector3.Lerp(hint.transform.position, startTargetPos, Time.deltaTime * speedHint);
+
+        // The target and hint rotation to the direcrion to user's view.
+        Vector3 cameraPos = Camera.main.transform.position;
+        cameraPos.z += Camera.main.farClipPlane;
+
+        Vector3 posToCenter = Vector3.LerpUnclamped(transform.position, cameraPos, transform.position.z / 100f);
+        hint.transform.rotation = transform.rotation = Quaternion.Inverse(Quaternion.Euler(new Vector3(posToCenter.y, -posToCenter.x, 0)));
     }
 }
